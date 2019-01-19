@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="140" tileheight="140" infinite="0" nextlayerid="5" nextobjectid="8">
+ <tileset firstgid="1" source="../Tilesheets/platformerPack_industrial_tilesheet@2.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMAqGF8gdaAcQAEPVfblIGJ9edEyJOlLVjoJRMAoGPwAAPyMI8g==
+  </data>
+ </layer>
+ <objectgroup id="2" name="ground">
+  <object id="1" x="700" y="1820" width="420" height="140"/>
+  <object id="2" x="1960" y="1820" width="700" height="140"/>
+  <object id="3" x="3360" y="1820" width="700" height="140"/>
+  <object id="4" x="4900" y="1820" width="700" height="140"/>
+  <object id="5" x="5460" y="1400" width="140" height="420"/>
+ </objectgroup>
+ <objectgroup id="3" name="goal">
+  <object id="6" x="5320" y="1680" width="140" height="140"/>
+ </objectgroup>
+ <objectgroup id="4" name="startPos">
+  <object id="7" x="840" y="1680" width="140" height="140"/>
+ </objectgroup>
+</map>

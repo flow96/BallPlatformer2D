@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="140" tileheight="140" infinite="0" nextlayerid="6" nextobjectid="18">
+ <tileset firstgid="1" source="../Tilesheets/platformerPack_industrial_tilesheet@2.tsx"/>
+ <layer id="1" name="tiles" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDHaQO9AOIABG3QexAx1TQy013TWYAK3cRal5tA4vXOYSso9e8Uiu++gF8LlvsOBRMApGAWEAACEXHBs=
+  </data>
+ </layer>
+ <objectgroup id="5" name="checkpoint"/>
+ <objectgroup id="4" name="startPos">
+  <object id="15" x="700" y="1680" width="140" height="140"/>
+ </objectgroup>
+ <objectgroup id="2" name="ground">
+  <object id="1" x="420" y="1680" width="140" height="280"/>
+  <object id="2" x="420" y="1960" width="4900" height="140"/>
+  <object id="3" x="5180" y="1400" width="140" height="560"/>
+  <object id="4" x="1540" y="1680" width="420" height="140"/>
+  <object id="5" x="1820" y="1540" width="420" height="140"/>
+  <object id="6" x="2100" y="1400" width="420" height="140"/>
+  <object id="7" x="2380" y="1260" width="420" height="140"/>
+  <object id="10" x="2660" y="1120" width="700" height="140"/>
+  <object id="11" x="4200" y="1120" width="700" height="140"/>
+  <object id="12" x="4760" y="700" width="140" height="420"/>
+ </objectgroup>
+ <objectgroup id="3" name="goal">
+  <object id="13" x="4620" y="980" width="140" height="140"/>
+  <object id="14" gid="56" x="4620" y="1120" width="140" height="140"/>
+ </objectgroup>
+</map>

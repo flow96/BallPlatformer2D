@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="50" height="20" tilewidth="140" tileheight="140" infinite="0" nextlayerid="9" nextobjectid="30">
+ <tileset firstgid="1" source="../Tilesheets/platformerPack_industrial_tilesheet@2.tsx"/>
+ <layer id="8" name="Tile Layer 1" width="50" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlMEKACAIQ/th///aKQhJM1OK2oNuujnQSgEAAPATxN7N8Fn7mYnVebQ1v0isXlE5dvS8Xru+1hzSPmi9qz2zmSTNmbZWJ+1DxE5qnllk/DMncmTwSo6G974AAGMq43ohpA==
+  </data>
+ </layer>
+ <objectgroup id="3" name="ground">
+  <object id="1" x="420" y="1260" width="420" height="140"/>
+  <object id="6" x="5740" y="1540" width="1120" height="140"/>
+  <object id="7" x="6720" y="1120" width="140" height="420"/>
+  <object id="11" x="700" y="1400" width="140" height="420"/>
+  <object id="12" x="700" y="1680" width="560" height="140"/>
+  <object id="16" x="1120" y="1540" width="700" height="140"/>
+  <object id="17" x="1680" y="1680" width="420" height="140"/>
+  <object id="18" x="1960" y="1820" width="560" height="140"/>
+  <object id="19" x="2380" y="1680" width="560" height="140"/>
+  <object id="20" x="2800" y="1540" width="840" height="140"/>
+  <object id="21" x="3500" y="1120" width="140" height="420"/>
+  <object id="22" x="3500" y="1120" width="840" height="140"/>
+  <object id="23" x="4200" y="1260" width="420" height="140"/>
+  <object id="24" x="4480" y="980" width="140" height="280"/>
+  <object id="25" x="4480" y="980" width="560" height="140"/>
+  <object id="26" x="4900" y="1120" width="140" height="980"/>
+  <object id="27" x="5040" y="1680" width="280" height="420"/>
+  <object id="28" x="5180" y="2100" width="700" height="140"/>
+  <object id="29" x="5740" y="1540" width="140" height="560"/>
+ </objectgroup>
+ <objectgroup id="4" name="startPos">
+  <object id="9" x="420" y="1120" width="140" height="140"/>
+ </objectgroup>
+ <objectgroup id="5" name="goal">
+  <object id="10" x="6440" y="1400" width="140" height="140"/>
+ </objectgroup>
+</map>
