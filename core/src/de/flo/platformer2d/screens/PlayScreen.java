@@ -1,5 +1,6 @@
 package de.flo.platformer2d.screens;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -59,6 +60,7 @@ public class PlayScreen implements Screen {
     private Hud hud;
 
     public boolean paused = false;
+    private boolean isMobile;
 
 
 
@@ -66,6 +68,7 @@ public class PlayScreen implements Screen {
         this.gameManager = gameManager;
         this.batch = batch;
         this.levelIndex = levelIndex;
+        this.isMobile = Gdx.app.getType() == Application.ApplicationType.Android || Gdx.app.getType() == Application.ApplicationType.iOS;
 
         OrthographicCamera camera = new OrthographicCamera();
         viewport = new FitViewport(Constants.V_WIDTH / Constants.PPM, Constants.V_HEIGHT / Constants.PPM, camera);
@@ -227,7 +230,7 @@ public class PlayScreen implements Screen {
 
 
         hud.draw();
-        if(!paused)
+        if(!paused && isMobile)
             controller.draw();
 
 
