@@ -271,4 +271,8 @@ public class PlayScreen implements Screen {
         world.dispose();
         mapRenderer.dispose();
     }
+
+    public PlatformerGame getGameManager() {
+        return gameManager;
+    }
 }

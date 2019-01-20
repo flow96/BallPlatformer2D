@@ -31,17 +31,17 @@ public class Hud {
     private OrthographicCamera cam;
     private Viewport viewport;
     private PlayScreen playScreen;
-    private TextureRegionDrawable pause, play, playBig;
-    private Image imgPause, imgPauseBig;
+    private TextureRegionDrawable pause, play, playBig, backBig;
+    private Image imgPause, imgPauseBig, imgBackBig;
     private Texture fontTexture;
 
     private Table pauseWindow;
 
-
-
     Label lblScore;
     Label lblLevel;
     Label lblPaused;
+
+
 
     public Hud(int level, SpriteBatch batch, final PlayScreen playScreen){
         score = 0;
@@ -72,7 +72,7 @@ public class Hud {
         play = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnPlay.png")));
 
         imgPause = new Image(pause);
-        imgPause.setSize(40, 40);
+        imgPause.setSize(55, 55);
 
 
         imgPause.addListener(new ClickListener(){
@@ -87,8 +87,8 @@ public class Hud {
             }
         });
 
-        lblScore.setFontScale(.5f);
-        lblLevel.setFontScale(.5f);
+        lblScore.setFontScale(.65f);
+        lblLevel.setFontScale(.65f);
 
         lblScore.setColor(Color.BLACK);
         lblLevel.setColor(Color.BLACK);
@@ -114,9 +114,12 @@ public class Hud {
         lblPaused.setColor(Color.WHITE);
 
         playBig = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnPlayLight.png")));
+        backBig = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnBackLight.png")));
 
         imgPauseBig = new Image(playBig);
         imgPauseBig.setSize(60, 60);
+        imgBackBig = new Image(backBig);
+        imgBackBig.setSize(60, 60);
 
         imgPauseBig.addListener(new ClickListener(){
             @Override
@@ -126,14 +129,22 @@ public class Hud {
             }
         });
 
+        imgBackBig.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                playScreen.getGameManager().showLevelSelectScreen();
+            }
+        });
+
         pauseWindow = new Table();
         pauseWindow.setSize(viewport.getWorldWidth(), 200);
         pauseWindow.setPosition(0, viewport.getWorldHeight() / 2 - 100);
         pauseWindow.setBackground(textureRegionDrawableBg);
 
-        pauseWindow.add(lblPaused).center().fill().padBottom(20);
+        pauseWindow.add(lblPaused).center().padBottom(20).colspan(2);
         pauseWindow.row();
-        pauseWindow.add(imgPauseBig).center().size(imgPauseBig.getWidth(), imgPauseBig.getHeight());
+        pauseWindow.add(imgBackBig).center().size(imgBackBig.getWidth(), imgBackBig.getHeight()).pad(10);
+        pauseWindow.add(imgPauseBig).center().size(imgPauseBig.getWidth(), imgPauseBig.getHeight()).pad(10);
         pauseWindow.setVisible(false);
         stage.addActor(pauseWindow);
     }
@@ -149,6 +160,7 @@ public class Hud {
         pauseWindow.setSize(0, 0);
         lblPaused.setColor(1, 1, 1, .05f);
         imgPauseBig.setColor(1, 1, 1, .05f);
+        imgBackBig.setColor(1, 1, 1, .05f);
         float delay = 0.018f;
         float delay2 = .01f;
 
@@ -170,6 +182,7 @@ public class Hud {
                     pauseWindow.setPosition(0, viewport.getWorldHeight() / 2 - pauseWindow.getHeight() / 2);
                     lblPaused.setColor(1, 1, 1, lblPaused.getColor().a + .05f);
                     imgPauseBig.setColor(1, 1, 1, imgPauseBig.getColor().a + .05f);
+                    imgBackBig.setColor(1, 1, 1, imgBackBig.getColor().a + .05f);
                 }
             }, delay2 * i + (delay * 11));
         }

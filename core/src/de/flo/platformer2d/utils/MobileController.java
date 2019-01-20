@@ -31,15 +31,19 @@ public class MobileController {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
                 switch(keycode){
+                    case Input.Keys.W:
                     case Input.Keys.UP:
                         upPressed = true;
                         break;
+                    case Input.Keys.S:
                     case Input.Keys.DOWN:
                         downPressed = true;
                         break;
+                        case Input.Keys.A:
                     case Input.Keys.LEFT:
                         leftPressed = true;
                         break;
+                    case Input.Keys.D:
                     case Input.Keys.RIGHT:
                         rightPressed = true;
                         break;
@@ -50,15 +54,19 @@ public class MobileController {
             @Override
             public boolean keyUp(InputEvent event, int keycode) {
                 switch(keycode){
+                    case Input.Keys.W:
                     case Input.Keys.UP:
                         upPressed = false;
                         break;
+                    case Input.Keys.S:
                     case Input.Keys.DOWN:
                         downPressed = false;
                         break;
+                    case Input.Keys.A:
                     case Input.Keys.LEFT:
                         leftPressed = false;
                         break;
+                    case Input.Keys.D:
                     case Input.Keys.RIGHT:
                         rightPressed = false;
                         break;

@@ -8,7 +8,9 @@ import java.io.File;
 import java.io.FilenameFilter;
 
 import de.flo.platformer2d.handlers.InputHandler;
+import de.flo.platformer2d.screens.LevelSelectScreen;
 import de.flo.platformer2d.screens.PlayScreen;
+import de.flo.platformer2d.screens.StartScreen;
 
 public class PlatformerGame extends Game {
 	SpriteBatch batch;
@@ -25,7 +27,8 @@ public class PlatformerGame extends Game {
 			}
 		}).length;
 
-		loadLevel(maxLevel);
+		//loadLevel(maxLevel);
+		setScreen(new StartScreen(batch, this));
 	}
 
 	public void loadLevel(int index){
@@ -41,7 +44,11 @@ public class PlatformerGame extends Game {
 		if(levelIndex <= maxLevel)
 			loadLevel(levelIndex);
 		else
-			loadLevel(1);
+			showLevelSelectScreen();
+	}
+
+	public void showLevelSelectScreen(){
+		setScreen(new LevelSelectScreen(batch, this));
 	}
 
 	@Override
