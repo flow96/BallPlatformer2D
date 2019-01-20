@@ -22,6 +22,7 @@ import java.util.HashMap;
 
 import de.flo.platformer2d.PlatformerGame;
 import de.flo.platformer2d.constants.Constants;
+import de.flo.platformer2d.utils.MobileController;
 
 public class Player extends Actor {
 
@@ -35,15 +36,17 @@ public class Player extends Actor {
     public boolean levelFinished = false;
     private boolean isDead = false;
     private PlatformerGame gameManager;
+    private MobileController controller;
 
     public HashMap<Integer, Integer> touches = new HashMap<Integer, Integer>();
 
 
-    public Player(Stage stage, World world, Vector2 startPos, PlatformerGame gameManager){
+    public Player(Stage stage, World world, Vector2 startPos, PlatformerGame gameManager, MobileController controller){
         this.texture = new TextureRegion(new Texture("Player/Ball.png"));
         this.world = world;
         this.startPos = startPos;
         this.gameManager = gameManager;
+        this.controller = controller;
         initPlayerBox2D();
 
         addAction(Actions.scaleTo(1, 1, .8f, Interpolation.circle));
@@ -97,13 +100,21 @@ public class Player extends Actor {
 
 
         if(!levelFinished) {
+            /*
             if (Gdx.input.isKeyPressed(Input.Keys.UP))
                 jump();
             if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
                 moveRight();
             if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
                 moveLeft();
-
+*/
+            if(controller.isLeftPressed())
+                moveLeft();
+            if(controller.isRightPressed())
+                moveRight();
+            if(controller.isUpPressed())
+                jump();
+            /*
             // Check touch-movement
             for (int i : touches.keySet()){
                 int v = touches.get(i) != null ? touches.get(i) : -100;
@@ -114,6 +125,7 @@ public class Player extends Actor {
             }
             if(touches.keySet().size() == 2)
                 jump();
+                */
 
             // Check for restart
             if (body.getPosition().y < -2) {
@@ -139,12 +151,12 @@ public class Player extends Actor {
     }
 
 
-    private void moveRight() {
+    public void moveRight() {
         if (body.getLinearVelocity().x <= 5.8f)
             body.applyLinearImpulse(new Vector2(0.2f, 0), body.getWorldCenter(), true);
     }
 
-    private void moveLeft() {
+    public void moveLeft() {
         if (body.getLinearVelocity().x >= -5.8f)
             body.applyLinearImpulse(new Vector2(-0.2f, 0), body.getWorldCenter(), true);
     }

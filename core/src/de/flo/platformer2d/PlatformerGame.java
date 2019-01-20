@@ -25,7 +25,7 @@ public class PlatformerGame extends Game {
 			}
 		}).length;
 
-		loadLevel(maxLevel);
+		loadLevel(1);
 	}
 
 	public void loadLevel(int index){

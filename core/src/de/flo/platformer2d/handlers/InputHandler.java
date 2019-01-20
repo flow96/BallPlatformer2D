@@ -6,12 +6,12 @@ import com.badlogic.gdx.InputProcessor;
 
 import de.flo.platformer2d.actors.Player;
 
-public class InputHandler implements InputProcessor{
+public class InputHandler/* implements InputProcessor*/{
 
     private Player player;
 
 
-
+/*
     public InputHandler(Player player){
         this.player = player;
     }
@@ -68,4 +68,5 @@ public class InputHandler implements InputProcessor{
     public boolean scrolled(int amount) {
         return false;
     }
+    */
 }

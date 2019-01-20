@@ -1,6 +1,7 @@
 package de.flo.platformer2d.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -29,8 +30,8 @@ import de.flo.platformer2d.actors.Goal;
 import de.flo.platformer2d.actors.Player;
 import de.flo.platformer2d.constants.Constants;
 import de.flo.platformer2d.handlers.Box2DContactHandler;
-import de.flo.platformer2d.handlers.InputHandler;
 import de.flo.platformer2d.utils.Hud;
+import de.flo.platformer2d.utils.MobileController;
 
 public class PlayScreen implements Screen {
 
@@ -49,11 +50,15 @@ public class PlayScreen implements Screen {
     private World world;
     private Box2DDebugRenderer b2DebugRenderer;
 
+    private MobileController controller;
+
     private Player player;
 
     public int levelIndex;
 
     private Hud hud;
+
+    public boolean paused = false;
 
 
 
@@ -84,8 +89,10 @@ public class PlayScreen implements Screen {
         Rectangle rec = map.getLayers().get("startPos").getObjects().getByType(RectangleMapObject.class).get(0).getRectangle();
         Vector2 playerPos = new Vector2((rec.getX() + rec.getWidth() / 2) / Constants.PPM, (rec.getY() + rec.getHeight()) / Constants.PPM);
 
+        controller = new MobileController(batch);
+
         // Setting up the player
-        player = new Player(mainStage, world, playerPos, gameManager);
+        player = new Player(mainStage, world, playerPos, gameManager, controller);
 
 
         // Init world
@@ -97,10 +104,13 @@ public class PlayScreen implements Screen {
         world.setContactListener(new Box2DContactHandler(player));
 
         // Set up HUD
-        hud = new Hud(levelIndex);
+        hud = new Hud(levelIndex, batch, this);
 
 
-        Gdx.input.setInputProcessor(new InputHandler(player));
+
+        InputMultiplexer im = new InputMultiplexer(controller.getStage(), hud.getStage());
+        Gdx.input.setInputProcessor(im);
+
     }
 
     private void initWorldBox2D(){
@@ -207,7 +217,8 @@ public class PlayScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        update(delta);
+        if(!paused)
+            update(delta);
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -216,6 +227,9 @@ public class PlayScreen implements Screen {
 
 
         hud.draw();
+        if(!paused)
+            controller.draw();
+
 
         // Debugging
         // b2DebugRenderer.render(world, mainStage.getCamera().combined);
@@ -224,11 +238,16 @@ public class PlayScreen implements Screen {
     @Override
     public void resize(int width, int height) {
         mainStage.getViewport().update(width, height);
+        hud.resize(width, height);
+        controller.resize(width, height);
     }
 
     @Override
     public void pause() {
-
+        if(!paused) {
+            paused = true;
+            hud.setPaused();
+        }
     }
 
     @Override
