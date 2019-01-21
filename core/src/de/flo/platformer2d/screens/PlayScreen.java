@@ -4,6 +4,7 @@ import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -15,6 +16,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -212,7 +214,8 @@ public class PlayScreen implements Screen {
         camPos.x = MathUtils.clamp(camPos.x, mainStage.getCamera().viewportWidth / 2, WORLD_WIDTH - mainStage.getCamera().viewportWidth / 2);
         camPos.y = MathUtils.clamp(camPos.y, mainStage.getCamera().viewportHeight / 2, WORLD_HEIGHT - mainStage.getCamera().viewportHeight / 2);
 
-        mainStage.getCamera().position.set(camPos, 0);
+
+        mainStage.getCamera().position.lerp(new Vector3(camPos.x, camPos.y, 0), 5.5f * delta);
         mainStage.getCamera().update();
 
         mapRenderer.setView((OrthographicCamera)mainStage.getCamera());

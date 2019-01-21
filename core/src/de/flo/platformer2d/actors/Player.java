@@ -38,11 +38,11 @@ public class Player extends Actor {
     private PlatformerGame gameManager;
     private MobileController controller;
 
-    public HashMap<Integer, Integer> touches = new HashMap<Integer, Integer>();
-
 
     public Player(Stage stage, World world, Vector2 startPos, PlatformerGame gameManager, MobileController controller){
-        this.texture = new TextureRegion(new Texture("Player/Ball.png"));
+        Texture txt = new Texture("Player/Ball2.png");
+        txt.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        this.texture = new TextureRegion(txt);
         this.world = world;
         this.startPos = startPos;
         this.gameManager = gameManager;
@@ -100,32 +100,12 @@ public class Player extends Actor {
 
 
         if(!levelFinished) {
-            /*
-            if (Gdx.input.isKeyPressed(Input.Keys.UP))
-                jump();
-            if (Gdx.input.isKeyPressed(Input.Keys.RIGHT))
-                moveRight();
-            if (Gdx.input.isKeyPressed(Input.Keys.LEFT))
-                moveLeft();
-*/
             if(controller.isLeftPressed())
                 moveLeft();
             if(controller.isRightPressed())
                 moveRight();
             if(controller.isUpPressed())
                 jump();
-            /*
-            // Check touch-movement
-            for (int i : touches.keySet()){
-                int v = touches.get(i) != null ? touches.get(i) : -100;
-                if(v == 1)
-                    moveRight();
-                if(v == -1)
-                    moveLeft();
-            }
-            if(touches.keySet().size() == 2)
-                jump();
-                */
 
             // Check for restart
             if (body.getPosition().y < -2) {

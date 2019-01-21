@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.io.File;
 import java.io.FilenameFilter;
 
-import de.flo.platformer2d.handlers.InputHandler;
 import de.flo.platformer2d.screens.LevelSelectScreen;
 import de.flo.platformer2d.screens.PlayScreen;
 import de.flo.platformer2d.screens.StartScreen;
