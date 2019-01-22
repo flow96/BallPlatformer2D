@@ -133,7 +133,7 @@ public class LevelSelectScreen implements Screen {
                     btnStart.pad(10);
                     btnStart.getLabel().setFontScale(.7f);
                     btnStart.setSize(85, 85);
-                    if(levelIndex > lastUnlocked) // TODO: Load last mastered level index and disable all other levels!
+                    if(levelIndex > lastUnlocked)
                         btnStart.setDisabled(true);
                     else {
                         btnStart.addListener(new ClickListener() {
