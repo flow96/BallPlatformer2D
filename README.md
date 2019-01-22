@@ -13,17 +13,17 @@ Level selection screen
 <br />
 
 <table><tr><td>
-<img src="./imgs/img2.png" alt="Start" width="450"/>
+<img src="./imgs/img5.png" alt="Start" width="450"/>
 </td>
 <td>
-<img src="./imgs/img3.png" alt="Start" width="450"/>
+<img src="./imgs/img4.png" alt="Start" width="450"/>
 </td></tr></table>
 <br />
 <table><tr><td>
-<img src="./imgs/img4.png" alt="Start" width="450"/>
+<img src="./imgs/img3.png" alt="Start" width="450"/>
 </td>
 <td>
-<img src="./imgs/img5.png" alt="Start" width="450"/>
+<img src="./imgs/img2.png" alt="Start" width="450"/>
 </td></tr></table>
 <br />
 
