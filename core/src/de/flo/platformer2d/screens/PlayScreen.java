@@ -99,6 +99,7 @@ public class PlayScreen implements Screen {
         // Setting up the player
         player = new Player(mainStage, world, playerPos, gameManager, controller);
 
+        mainStage.getCamera().position.set(playerPos, 0);
 
         // Init world
         initWorldBox2D();
@@ -215,7 +216,7 @@ public class PlayScreen implements Screen {
         camPos.y = MathUtils.clamp(camPos.y, mainStage.getCamera().viewportHeight / 2, WORLD_HEIGHT - mainStage.getCamera().viewportHeight / 2);
 
 
-        mainStage.getCamera().position.lerp(new Vector3(camPos.x, camPos.y, 0), 5.5f * delta);
+        mainStage.getCamera().position.lerp(new Vector3(camPos.x, camPos.y, 0), 5f * delta);
         mainStage.getCamera().update();
 
         mapRenderer.setView((OrthographicCamera)mainStage.getCamera());

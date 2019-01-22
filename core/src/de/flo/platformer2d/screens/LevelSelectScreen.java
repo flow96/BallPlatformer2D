@@ -1,6 +1,7 @@
 package de.flo.platformer2d.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -97,6 +98,7 @@ public class LevelSelectScreen implements Screen {
 
         TextButton.TextButtonStyle txtBtnDisabledStyle = new TextButton.TextButtonStyle();
         txtBtnDisabledStyle.font = font;
+
         txtBtnDisabledStyle.up = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnDisabled.png")));
         txtBtnDisabledStyle.down = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnDisabled.png")));
         txtBtnDisabledStyle.checked = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnDisabled.png")));
@@ -112,12 +114,15 @@ public class LevelSelectScreen implements Screen {
         textButtonStyle.fontColor = Color.BLACK;
         textButtonStyle.downFontColor = Color.LIGHT_GRAY;
 
-        int levelName = 1;
+        Preferences prefs = Gdx.app.getPreferences("level-data");
+        int levelIndex = 1;
+        int lastUnlocked = prefs.getInteger("lastUnlocked", 1);
+        Gdx.app.log("Levelselect", "LastUnlocked: " + lastUnlocked);
         A: for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 10; j++) {
-                final int nr = levelName;
+                final int nr = levelIndex;
                 TextButton btnStart;
-                if(nr > game.maxLevel) {
+                if(nr > game.maxLevel) {    // Disabled levels (they have not been developed now...)
                     btnStart = new TextButton("", txtBtnDisabledStyle);
                     btnStart.pad(10);
                     btnStart.getLabel().setFontScale(.7f);
@@ -128,7 +133,7 @@ public class LevelSelectScreen implements Screen {
                     btnStart.pad(10);
                     btnStart.getLabel().setFontScale(.7f);
                     btnStart.setSize(85, 85);
-                    if(levelName > 100) // TODO: Load last mastered level index and disable all other levels!
+                    if(levelIndex > lastUnlocked) // TODO: Load last mastered level index and disable all other levels!
                         btnStart.setDisabled(true);
                     else {
                         btnStart.addListener(new ClickListener() {
@@ -143,7 +148,7 @@ public class LevelSelectScreen implements Screen {
 
 
                 table.add(btnStart).size(btnStart.getWidth(), btnStart.getHeight()).pad(10);
-                levelName++;
+                levelIndex++;
             }
             table.row();
         }

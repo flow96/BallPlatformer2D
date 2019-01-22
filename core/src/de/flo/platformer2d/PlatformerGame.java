@@ -2,6 +2,7 @@ package de.flo.platformer2d;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.io.File;
@@ -40,6 +41,12 @@ public class PlatformerGame extends Game {
 
 	public void loadNextLevel(){
 		levelIndex++;
+		Preferences prefs = Gdx.app.getPreferences("level-data");
+		if(prefs.getInteger("lastUnlocked", 1) < levelIndex) {
+			prefs.putInteger("lastUnlocked", levelIndex);
+			prefs.flush();
+			Gdx.app.log("GameManager", "Storing LastUnlocked: " + levelIndex);
+		}
 		if(levelIndex <= maxLevel)
 			loadLevel(levelIndex);
 		else

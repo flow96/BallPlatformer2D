@@ -49,7 +49,7 @@ public class Player extends Actor {
         this.controller = controller;
         initPlayerBox2D();
 
-        addAction(Actions.scaleTo(1, 1, .8f, Interpolation.circle));
+        addAction(Actions.scaleTo(1, 1, .9f, Interpolation.circle));
 
         stage.addActor(this);
 
@@ -142,7 +142,7 @@ public class Player extends Actor {
     }
 
     public void jump(){
-        if(canJump) {
+        if(canJump && body.getLinearVelocity().y < .4f) {
             body.applyLinearImpulse(new Vector2(0, 6.6f), body.getWorldCenter(), true);
             canJump = false;
         }
