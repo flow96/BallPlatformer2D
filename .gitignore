@@ -24,12 +24,17 @@ www-test/
 /android/libs/x86/
 /android/libs/x86_64/
 /android/gen/
+/android/release/
+/Keystore/
 .idea/
 *.ipr
 *.iws
 *.iml
 /android/out/
 com_crashlytics_export_strings.xml
+*.jks
+BallPlatformerKeyHelp.txt
+
 
 ## Eclipse
 
