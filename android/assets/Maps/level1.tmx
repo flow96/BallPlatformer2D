@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="140" tileheight="140" infinite="0" nextlayerid="6" nextobjectid="18">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="140" tileheight="140" infinite="0" nextlayerid="8" nextobjectid="18">
  <tileset firstgid="1" source="../Tilesheets/platformerPack_industrial_tilesheet@2.tsx"/>
+ <tileset firstgid="113" source="pixlBack.tsx"/>
+ <layer id="7" name="Back" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMFyBKRIebGCwumsUjIJRMApGAW0BAKBuAQo=
+  </data>
+ </layer>
  <layer id="1" name="tiles" width="40" height="20">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUDHaQO9AOIABG3QexAx1TQy013TWYAK3cRal5tA4vXOYSso9e8Uiu++gF8LlvsOBRMApGAWEAACEXHBs=

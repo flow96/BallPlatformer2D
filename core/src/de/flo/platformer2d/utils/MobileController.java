@@ -13,17 +13,23 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import java.security.CodeSigner;
+
+import de.flo.platformer2d.constants.Constants;
+
 public class MobileController {
     Viewport viewport;
     Stage stage;
     boolean upPressed, downPressed, leftPressed, rightPressed;
     OrthographicCamera cam;
 
-    private int btnSize = 125;
+    private int btnSize = 140;
+    private Assets assets;
 
     public MobileController(SpriteBatch batch){
+        assets = Assets.getInstance();
         cam = new OrthographicCamera();
-        viewport = new FitViewport(1200, 720, cam);
+        viewport = new FitViewport(1280, 720, cam);
         stage = new Stage(viewport, batch);
 
         stage.addListener(new InputListener(){
@@ -81,7 +87,7 @@ public class MobileController {
 
         table.left().bottom();
 
-        Image upImg = new Image(new Texture("Hud/Buttons/btnUp.png"));
+        Image upImg = new Image(assets.getManager().get(assets.btnUp, Texture.class));
         upImg.setSize(btnSize, btnSize);
         upImg.addListener(new InputListener() {
 
@@ -98,7 +104,7 @@ public class MobileController {
         });
 
 
-        Image rightImg = new Image(new Texture("Hud/Buttons/btnRight.png"));
+        Image rightImg = new Image(assets.getManager().get(assets.btnRight, Texture.class));
         rightImg.setSize(btnSize, btnSize);
         rightImg.addListener(new InputListener() {
 
@@ -114,7 +120,7 @@ public class MobileController {
             }
         });
 
-        Image leftImg = new Image(new Texture("Hud/Buttons/btnLeft.png"));
+        Image leftImg = new Image(assets.getManager().get(assets.btnLeft, Texture.class));
         leftImg.setSize(btnSize, btnSize);
         leftImg.addListener(new InputListener() {
 

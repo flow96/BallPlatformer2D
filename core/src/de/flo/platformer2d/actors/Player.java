@@ -22,7 +22,9 @@ import java.util.HashMap;
 
 import de.flo.platformer2d.PlatformerGame;
 import de.flo.platformer2d.constants.Constants;
+import de.flo.platformer2d.utils.Assets;
 import de.flo.platformer2d.utils.MobileController;
+import de.flo.platformer2d.utils.ParticleEffectController;
 
 public class Player extends Actor {
 
@@ -30,29 +32,36 @@ public class Player extends Actor {
     private TextureRegion texture;
     public Vector2 startPos;
     private World world;
+    private Stage stage;
     public Body body;
-    private int size = 110;
+    private int size = 80;
     public boolean canJump = false;
     public boolean levelFinished = false;
     private boolean isDead = false;
     private PlatformerGame gameManager;
     private MobileController controller;
 
+    private ParticleEffectController effectController;
+
+    private Assets assets;
 
     public Player(Stage stage, World world, Vector2 startPos, PlatformerGame gameManager, MobileController controller){
-        Texture txt = new Texture("Player/Ball2.png");
-        txt.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        this.texture = new TextureRegion(txt);
         this.world = world;
+        this.stage = stage;
         this.startPos = startPos;
         this.gameManager = gameManager;
         this.controller = controller;
+
+        assets = Assets.getInstance();
+        Texture txt = assets.getManager().get(assets.ball);
+        txt.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        this.texture = new TextureRegion(txt);
+
+        effectController = ParticleEffectController.getInstance();
+
         initPlayerBox2D();
-
         addAction(Actions.scaleTo(1, 1, .9f, Interpolation.circle));
-
         stage.addActor(this);
-
     }
 
     private void initPlayerBox2D(){
@@ -127,23 +136,31 @@ public class Player extends Actor {
 
         // Last actions - update sprite pos and rotation
         setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
-        setRotation((getRotation() + (body.getLinearVelocity().x * -4.2f)));
+        setRotation((getRotation() + (body.getLinearVelocity().x * -4.7f)));
+
+
+        if(canJump && body.getLinearVelocity().len() > 1f && !levelFinished)
+            effectController.setEmit(true);
+        else
+            effectController.setEmit(false);
+        effectController.setPos(getX() + getWidth() / 2, getY());
+        effectController.update(delta);
     }
 
 
     public void moveRight() {
-        if (body.getLinearVelocity().x <= 5.8f)
+        if (body.getLinearVelocity().x <= 5.7f)
             body.applyLinearImpulse(new Vector2(0.2f, 0), body.getWorldCenter(), true);
     }
 
     public void moveLeft() {
-        if (body.getLinearVelocity().x >= -5.8f)
+        if (body.getLinearVelocity().x >= -5.7f)
             body.applyLinearImpulse(new Vector2(-0.2f, 0), body.getWorldCenter(), true);
     }
 
     public void jump(){
         if(canJump && body.getLinearVelocity().y < .4f) {
-            body.applyLinearImpulse(new Vector2(0, 6.6f), body.getWorldCenter(), true);
+            body.applyLinearImpulse(new Vector2(0, 6.2f), body.getWorldCenter(), true);
             canJump = false;
         }
     }
@@ -165,6 +182,7 @@ public class Player extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
+        effectController.draw(batch);
         batch.draw(texture, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
     }
 }

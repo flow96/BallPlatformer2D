@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -22,6 +23,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import de.flo.platformer2d.PlatformerGame;
+import de.flo.platformer2d.utils.Assets;
 
 public class LevelSelectScreen implements Screen {
 
@@ -37,18 +39,21 @@ public class LevelSelectScreen implements Screen {
 
     private Label lblTitle;
 
+    private Assets assets;
+
 
 
     public LevelSelectScreen(SpriteBatch batch, PlatformerGame game){
         this.batch = batch;
         this.game = game;
 
+        assets = Assets.getInstance();
 
         cam = new OrthographicCamera();
         viewport = new FitViewport(1200, 720, cam);
         stage = new Stage(viewport, batch);
 
-        fontTexture = new Texture(Gdx.files.internal("Fonts/test.png"), true);
+        fontTexture = assets.getManager().get(assets.font);
         fontTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         font = new BitmapFont(Gdx.files.internal("Fonts/test.fnt"), new TextureRegion(fontTexture));
 
@@ -66,12 +71,11 @@ public class LevelSelectScreen implements Screen {
         table.setFillParent(true);
         table.top();
 
-
         TextButton.TextButtonStyle backStyle = new TextButton.TextButtonStyle();
         backStyle.font = font;
-        backStyle.up = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnBack.png")));
-        backStyle.down = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnBack.png")));
-        backStyle.checked = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnBack.png")));
+        backStyle.up = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnBack, Texture.class)));
+        backStyle.down = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnBack, Texture.class)));
+        backStyle.checked = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnBack, Texture.class)));
         backStyle.fontColor = Color.BLACK;
         backStyle.downFontColor = Color.LIGHT_GRAY;
 
@@ -84,7 +88,7 @@ public class LevelSelectScreen implements Screen {
         btnBack.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new StartScreen(batch, game));
+                game.setScreen(new StartScreen(batch, game, false));
             }
         });
 
@@ -99,17 +103,17 @@ public class LevelSelectScreen implements Screen {
         TextButton.TextButtonStyle txtBtnDisabledStyle = new TextButton.TextButtonStyle();
         txtBtnDisabledStyle.font = font;
 
-        txtBtnDisabledStyle.up = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnDisabled.png")));
-        txtBtnDisabledStyle.down = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnDisabled.png")));
-        txtBtnDisabledStyle.checked = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnDisabled.png")));
-        txtBtnDisabledStyle.disabled = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnDisabled.png")));
+        txtBtnDisabledStyle.up = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnDisabled, Texture.class)));
+        txtBtnDisabledStyle.down = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnDisabled, Texture.class)));
+        txtBtnDisabledStyle.checked = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnDisabled, Texture.class)));
+        txtBtnDisabledStyle.disabled = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnDisabled, Texture.class)));
         txtBtnDisabledStyle.disabledFontColor = new Color(0, 0, 0, 0);
 
         TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
         textButtonStyle.font = font;
-        textButtonStyle.up = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnBox.png")));
-        textButtonStyle.down = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnBox.png")));
-        textButtonStyle.checked = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnBox.png")));
+        textButtonStyle.up = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnBox, Texture.class)));
+        textButtonStyle.down = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnBox, Texture.class)));
+        textButtonStyle.checked = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnBox, Texture.class)));
         textButtonStyle.disabledFontColor = Color.LIGHT_GRAY;
         textButtonStyle.fontColor = Color.BLACK;
         textButtonStyle.downFontColor = Color.LIGHT_GRAY;
@@ -170,12 +174,13 @@ public class LevelSelectScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        stage.getViewport().apply();
         stage.draw();
     }
 
     @Override
     public void resize(int width, int height) {
-        viewport.update(width, height);
+        stage.getViewport().update(width, height);
     }
 
     @Override

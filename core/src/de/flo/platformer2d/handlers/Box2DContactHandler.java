@@ -9,14 +9,17 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 import de.flo.platformer2d.actors.CheckPoint;
 import de.flo.platformer2d.actors.Player;
 import de.flo.platformer2d.screens.PlayScreen;
+import de.flo.platformer2d.utils.ParticleEffectController;
 
 public class Box2DContactHandler implements ContactListener {
 
     private Player player;
     private int groundContactCounter = 0;
+    private ParticleEffectController effectController;
 
     public Box2DContactHandler(Player player){
         this.player = player;
+        this.effectController = ParticleEffectController.getInstance();
     }
 
     @Override
@@ -26,8 +29,11 @@ public class Box2DContactHandler implements ContactListener {
 
         if(fixA.getUserData() == "groundSensor" || fixB.getUserData() == "groundSensor"){
             groundContactCounter++;
-            if(groundContactCounter > 0)
+            if(groundContactCounter > 0) {
                 player.canJump = true;
+                effectController.setPos(player.getX() + player.getWidth() / 2, player.getY());
+                effectController.setEmit(true); // set to true to cause collision effect
+            }
         }
 
         if(fixA.getUserData() == "goal" && fixB.getUserData() == "player"

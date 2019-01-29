@@ -10,7 +10,9 @@ import java.io.FilenameFilter;
 
 import de.flo.platformer2d.screens.LevelSelectScreen;
 import de.flo.platformer2d.screens.PlayScreen;
+import de.flo.platformer2d.screens.SplashScreen;
 import de.flo.platformer2d.screens.StartScreen;
+import de.flo.platformer2d.utils.Assets;
 
 public class PlatformerGame extends Game {
 	SpriteBatch batch;
@@ -20,15 +22,14 @@ public class PlatformerGame extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		maxLevel = Gdx.files.internal("Maps").list(new FilenameFilter() {
+		maxLevel = Gdx.files.internal("Maps/New").list(new FilenameFilter() {
 			@Override
 			public boolean accept(File file, String s) {
 				return s.endsWith(".tmx");
 			}
 		}).length;
 
-		//loadLevel(maxLevel);
-		setScreen(new StartScreen(batch, this));
+		setScreen(new SplashScreen(batch, this, null));
 	}
 
 	public void loadLevel(int index){
@@ -57,6 +58,11 @@ public class PlatformerGame extends Game {
 		setScreen(new LevelSelectScreen(batch, this));
 	}
 
+	public void showStartScreen(boolean transition){
+		setScreen(new StartScreen(batch, this, transition));
+	}
+
+
 	@Override
 	public void render () {
 		super.render();
@@ -65,5 +71,13 @@ public class PlatformerGame extends Game {
 	@Override
 	public void dispose () {
 		batch.dispose();
+		Assets.getInstance().dispose();
+	}
+
+
+	@Override
+	public void resume() {
+		super.resume();
+
 	}
 }

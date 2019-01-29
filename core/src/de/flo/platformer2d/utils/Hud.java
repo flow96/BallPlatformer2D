@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -20,11 +19,15 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+
+import de.flo.platformer2d.constants.Constants;
 import de.flo.platformer2d.screens.PlayScreen;
 
 public class Hud {
 
     private Stage stage;
+
+    private Assets assets;
 
     private int score;
     private int level;
@@ -48,10 +51,12 @@ public class Hud {
         this.level = level;
         this.playScreen = playScreen;
 
+        assets = Assets.getInstance();
+
         cam = new OrthographicCamera();
-        viewport = new FitViewport(1200, 720, cam);
+        viewport = new FitViewport(1280, 720, cam);
         stage = new Stage(viewport, batch);
-        fontTexture = new Texture(Gdx.files.internal("Fonts/test.png"), true);
+        fontTexture = assets.getManager().get(assets.font);
         fontTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
         initHUD();
@@ -63,13 +68,11 @@ public class Hud {
         Table table = new Table();
         table.top();
         table.setFillParent(true);
-
-
         lblScore = new Label("SCORE: " + score, new Label.LabelStyle(new BitmapFont(Gdx.files.internal("Fonts/test.fnt"), new TextureRegion(fontTexture)), Color.WHITE));
         lblLevel = new Label("LEVEL: " + level, new Label.LabelStyle(new BitmapFont(Gdx.files.internal("Fonts/test.fnt"), new TextureRegion(fontTexture)), Color.WHITE));
 
-        pause = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnPause.png")));
-        play = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnPlay.png")));
+        pause = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnPause, Texture.class)));
+        play = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnPlay, Texture.class)));
 
         imgPause = new Image(pause);
         imgPause.setSize(55, 55);
@@ -113,8 +116,8 @@ public class Hud {
         lblPaused.setFontScale(.8f);
         lblPaused.setColor(Color.WHITE);
 
-        playBig = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnPlayLight.png")));
-        backBig = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnBackLight.png")));
+        playBig = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnPlayLight, Texture.class)));
+        backBig = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnBackLight, Texture.class)));
 
         imgPauseBig = new Image(playBig);
         imgPauseBig.setSize(60, 60);
@@ -152,6 +155,8 @@ public class Hud {
 
     public void draw() {
         stage.act();
+        stage.getViewport().apply();
+
         stage.draw();
     }
 
@@ -196,6 +201,7 @@ public class Hud {
 
     public void resize(int width, int height){
         viewport.update(width, height);
+        viewport.apply();
     }
 
     public Stage getStage() {

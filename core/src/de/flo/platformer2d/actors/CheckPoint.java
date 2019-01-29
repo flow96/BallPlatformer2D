@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import de.flo.platformer2d.constants.Constants;
+import de.flo.platformer2d.utils.Assets;
 
 public class CheckPoint extends Actor {
 
@@ -17,11 +18,15 @@ public class CheckPoint extends Actor {
     private int divider = 10;
     private boolean isChecked = false;
 
+    private Assets assets;
+
     public CheckPoint(Player player, Vector2 pos){
         this.player = player;
 
-        trBlue = new TextureRegion(new Texture("Goals/goal_blue.png"));
-        trYellow = new TextureRegion(new Texture("Goals/goal_yellow.png"));
+        assets = Assets.getInstance();
+
+        trBlue = new TextureRegion(assets.getManager().get(assets.goalBlue, Texture.class));
+        trYellow = new TextureRegion(assets.getManager().get(assets.goalYellow, Texture.class));
         setSize(Constants.TILE_WIDTH / Constants.PPM, Constants.TILE_HEIGHT / Constants.PPM);
         setPosition(pos.x, pos.y);
     }

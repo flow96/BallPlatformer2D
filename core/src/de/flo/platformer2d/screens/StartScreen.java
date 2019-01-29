@@ -9,8 +9,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -21,6 +23,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import de.flo.platformer2d.PlatformerGame;
+import de.flo.platformer2d.utils.Assets;
 
 public class StartScreen implements Screen {
 
@@ -31,25 +34,35 @@ public class StartScreen implements Screen {
     private Viewport viewport;
     private Texture fontTexture;
     private BitmapFont font;
+    private TextButton btnStart;
+
+    private Assets assets;
 
     private PlatformerGame game;
 
     private Label lblTitle;
 
 
-    public StartScreen(SpriteBatch batch, PlatformerGame game){
+    public StartScreen(SpriteBatch batch, PlatformerGame game, boolean transition){
         this.batch = batch;
         this.game = game;
+        assets = Assets.getInstance();
 
         cam = new OrthographicCamera();
         viewport = new FitViewport(1200, 720, cam);
         stage = new Stage(viewport, batch);
 
-        fontTexture = new Texture(Gdx.files.internal("Fonts/test.png"), true);
+        fontTexture = assets.getManager().get(assets.font);
         fontTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         font = new BitmapFont(Gdx.files.internal("Fonts/test.fnt"), new TextureRegion(fontTexture));
 
         initMenu();
+
+        if(transition){
+            btnStart.setColor(0, 0, 0, 0);
+            stage.getRoot().setColor(Color.BLACK);
+            stage.addAction(Actions.sequence(Actions.color(Color.WHITE, .45f)));
+        }
 
     }
 
@@ -61,15 +74,16 @@ public class StartScreen implements Screen {
 
         TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
         textButtonStyle.font = font;
-        textButtonStyle.up = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnBackground.png")));
-        textButtonStyle.down = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnBackground.png")));
-        textButtonStyle.checked = new TextureRegionDrawable(new TextureRegion(new Texture("Hud/Buttons/btnBackground.png")));
+        textButtonStyle.up = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnBackground, Texture.class)));
+        textButtonStyle.down = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnBackground, Texture.class)));
+        textButtonStyle.checked = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnBackground, Texture.class)));
         textButtonStyle.fontColor = Color.BLACK;
         textButtonStyle.downFontColor = Color.LIGHT_GRAY;
-        TextButton btnStart = new TextButton("Start", textButtonStyle);
+        btnStart = new TextButton("Start", textButtonStyle);
         btnStart.pad(5);
         btnStart.getLabel().setFontScale(.7f);
         btnStart.setSize(170, 80);
+
 
         btnStart.addListener(new ClickListener(){
             @Override
@@ -83,7 +97,7 @@ public class StartScreen implements Screen {
         table.setFillParent(true);
         table.top();
 
-        table.add(lblTitle).center().fill().padTop(20);
+        table.add(lblTitle).center().fill().padTop(80);
         table.row();
         table.add(btnStart).expandY().center().size(btnStart.getWidth(), btnStart.getHeight());
         stage.addActor(table);
@@ -99,8 +113,11 @@ public class StartScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(1, 1, 1, 1);
+        stage.act();
+        Color color = stage.getRoot().getColor();
+        Gdx.gl.glClearColor(color.r, color.g, color.b, color.a);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        btnStart.setColor(color);
         stage.draw();
     }
 

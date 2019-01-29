@@ -7,17 +7,22 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import de.flo.platformer2d.constants.Constants;
+import de.flo.platformer2d.utils.Assets;
 
 public class Goal extends Actor {
 
     private Player player;
     private TextureRegion trFinished, trUnfinished;
 
+    private Assets assets;
+
     public Goal(Player player, Vector2 pos){
         this.player = player;
 
-        trFinished = new TextureRegion(new Texture("Goals/goal_green.png"));
-        trUnfinished = new TextureRegion(new Texture("Goals/goal_yellow.png"));
+        assets = Assets.getInstance();
+
+        trFinished = new TextureRegion(assets.getManager().get(assets.goalGreen, Texture.class));
+        trUnfinished = new TextureRegion(assets.getManager().get(assets.goalYellow, Texture.class));
         setSize(Constants.TILE_WIDTH / Constants.PPM, Constants.TILE_HEIGHT / Constants.PPM);
         setPosition(pos.x, pos.y);
     }

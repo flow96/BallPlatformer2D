@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="55" height="30" tilewidth="128" tileheight="128" infinite="0" nextlayerid="11" nextobjectid="83">
+ <tileset firstgid="1" source="spritesheet_ground.tsx"/>
+ <tileset firstgid="129" source="spritesheet_tiles.tsx"/>
+ <tileset firstgid="257" source="PaperBackground.tsx"/>
+ <layer id="7" name="background" width="55" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0sENgDAQA8FcIAH6bxi3kJ992sdKW8BUjTHVparZ32qp3fAf9aqv4bv4wSQmMZn9Ln4wiUlMZr+LH0xiEpPZ7+IHk5jEZPa7+MEkJjGZ/S5+MHn2P2M8Jo8=
+  </data>
+ </layer>
+ <layer id="8" name="tiles2" width="55" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0rENADAIBDHE/l0WZgr0UrAnuOKqAPjZSwcAHNDpAM7zIGkeBADYM8utAJo=
+  </data>
+ </layer>
+ <layer id="9" name="tiles" width="55" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt1jkOgCAQBVC0w85zWVp6RLyCF7MSEkkmBlkKGJb/kmlM1HH4KkIAAEANLu4GMll1ybemBq7rcxa6Tyl0hiXnCHE4Mg5p6DdBsnWRB83fzNwLhCldC3cTGdgcIoNt6DGDhsmhyeCI/+Te9r4W9sB+ra27az1vR6Wsu/o5XsNsDl07qS3inO+zhwrvBECdHm4dDgo=
+  </data>
+ </layer>
+ <objectgroup id="4" name="goal">
+  <object id="79" x="3456" y="768" width="128" height="128"/>
+ </objectgroup>
+ <objectgroup id="5" name="ground">
+  <object id="65" x="6016" y="896" width="512" height="128"/>
+  <object id="66" x="4096" y="3200" width="1664" height="128"/>
+  <object id="67" x="3072" y="3072" width="640" height="128"/>
+  <object id="68" x="1792" y="3072" width="640" height="128"/>
+  <object id="69" x="1024" y="2816" width="640" height="128"/>
+  <object id="70" x="128" y="2560" width="640" height="128"/>
+  <object id="71" x="512" y="2176" width="384" height="128"/>
+  <object id="72" x="768" y="2048" width="128" height="128"/>
+  <object id="73" x="896" y="1792" width="512" height="128"/>
+  <object id="74" x="1280" y="1664" width="128" height="128"/>
+  <object id="75" x="1536" y="1408" width="512" height="128"/>
+  <object id="76" x="2304" y="1152" width="640" height="128"/>
+  <object id="77" x="3200" y="896" width="512" height="128"/>
+  <object id="81" x="2432" y="3200" width="640" height="64"/>
+  <object id="82" x="256" y="2432" width="128" height="128"/>
+ </objectgroup>
+ <objectgroup id="10" name="spikes">
+  <object id="80" x="2432" y="3168" width="640" height="32"/>
+ </objectgroup>
+ <objectgroup id="6" name="startPos">
+  <object id="78" x="6272" y="768" width="128" height="128"/>
+ </objectgroup>
+</map>

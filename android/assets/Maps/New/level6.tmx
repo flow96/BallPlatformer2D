@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="55" height="30" tilewidth="128" tileheight="128" infinite="0" nextlayerid="11" nextobjectid="31">
+ <tileset firstgid="1" source="spritesheet_ground.tsx"/>
+ <tileset firstgid="129" source="spritesheet_tiles.tsx"/>
+ <tileset firstgid="257" source="PaperBackground.tsx"/>
+ <layer id="7" name="background" width="55" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0sENgDAQA8FcIAH6bxi3kJ992sdKW8BUjTHVparZ32qp3fAf9aqv4bv4wSQmMZn9Ln4wiUlMZr+LH0xiEpPZ7+IHk5jEZPa7+MEkJjGZ/S5+MHn2P2M8Jo8=
+  </data>
+ </layer>
+ <layer id="8" name="tiles2" width="55" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzAENAAAIwKD3t7Q5nBCAAgA+mGMvAAAAALVHVQEX
+  </data>
+ </layer>
+ <layer id="9" name="tiles" width="55" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0cEKABAQRdFhZ+n/f1aymSyUBXrjnpLNKLcxAwBAX3n9gYPy6w8ctGqrNvbaT7o4tzvr5829i7S3PN2R0KaJNk20aaJNE22aaNNEm6bIbZEVd37TAOMZASc=
+  </data>
+ </layer>
+ <objectgroup id="4" name="goal">
+  <object id="20" x="6144" y="3456" width="128" height="128"/>
+ </objectgroup>
+ <objectgroup id="5" name="ground">
+  <object id="21" x="384" y="1280" width="512" height="128"/>
+  <object id="22" x="1664" y="1280" width="512" height="128"/>
+  <object id="23" x="2944" y="1280" width="512" height="128"/>
+  <object id="24" x="4352" y="1280" width="512" height="128"/>
+  <object id="25" x="5888" y="1280" width="256" height="128"/>
+  <object id="26" x="6016" y="1408" width="128" height="2048"/>
+  <object id="27" x="6272" y="1280" width="128" height="2176"/>
+  <object id="28" x="6400" y="1280" width="256" height="128"/>
+  <object id="29" x="6528" y="896" width="128" height="384"/>
+  <object id="30" x="6016" y="3584" width="384" height="128"/>
+ </objectgroup>
+ <objectgroup id="10" name="spikes"/>
+ <objectgroup id="6" name="startPos">
+  <object id="17" x="384" y="1152" width="128" height="128"/>
+ </objectgroup>
+</map>

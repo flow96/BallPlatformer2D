@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="128" tileheight="128" infinite="0" nextlayerid="10" nextobjectid="7">
+ <tileset firstgid="1" source="spritesheet_ground.tsx"/>
+ <tileset firstgid="129" source="PaperBackground.tsx"/>
+ <tileset firstgid="138" source="spritesheet_tiles.tsx"/>
+ <layer id="7" name="background" width="30" height="17">
+  <data encoding="base64" compression="zlib">
+   eJzt0LkRACAQw0C3fvx0jRogdeRAM4q3JDXqVMYfNGmZf9Oha36nbZzjHOc4xznOv38gwAis
+  </data>
+ </layer>
+ <layer id="8" name="tiles" width="30" height="17">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUkAqYhrm9gkDMiYSx2YuuBoQZiTQPn9pRMApGAW0BAFJ+AJ8=
+  </data>
+ </layer>
+ <layer id="9" name="tiles2" width="30" height="17">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUkAocB9oBFIIpA+2AUTAKRsGAAQCM5QDW
+  </data>
+ </layer>
+ <objectgroup id="3" name="startPos">
+  <object id="1" x="256" y="1024" width="128" height="128"/>
+ </objectgroup>
+ <objectgroup id="4" name="ground">
+  <object id="3" x="128" y="1152" width="768" height="128"/>
+  <object id="4" x="1536" y="1152" width="768" height="128"/>
+  <object id="5" x="2816" y="1024" width="640" height="128"/>
+  <object id="6" x="3328" y="768" width="128" height="256"/>
+ </objectgroup>
+ <objectgroup id="5" name="goal">
+  <object id="2" x="3200" y="896" width="128" height="128"/>
+ </objectgroup>
+</map>

@@ -25,6 +25,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import de.flo.platformer2d.PlatformerGame;
@@ -77,7 +78,7 @@ public class PlayScreen implements Screen {
         mainStage = new Stage(viewport, batch);
 
         mapLoader = new TmxMapLoader();
-        map = mapLoader.load("Maps/level" + levelIndex + ".tmx");
+        map = mapLoader.load("Maps/New/level" + levelIndex + ".tmx");
         WORLD_HEIGHT = ((Integer) map.getProperties().get("height") * (Integer) map.getProperties().get("tileheight")) / Constants.PPM;
         WORLD_WIDTH = ((Integer) map.getProperties().get("width") * (Integer) map.getProperties().get("tilewidth")) / Constants.PPM;
 
@@ -99,7 +100,10 @@ public class PlayScreen implements Screen {
         // Setting up the player
         player = new Player(mainStage, world, playerPos, gameManager, controller);
 
-        mainStage.getCamera().position.set(playerPos, 0);
+        Vector2 camPos = new Vector2(playerPos.x, playerPos.y);
+        camPos.x = MathUtils.clamp(camPos.x, mainStage.getCamera().viewportWidth / 2, WORLD_WIDTH - mainStage.getCamera().viewportWidth / 2);
+        camPos.y = MathUtils.clamp(camPos.y, mainStage.getCamera().viewportHeight / 2, WORLD_HEIGHT - mainStage.getCamera().viewportHeight / 2);
+        mainStage.getCamera().position.set(camPos, 0);
 
         // Init world
         initWorldBox2D();
@@ -229,6 +233,8 @@ public class PlayScreen implements Screen {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+
+        mainStage.getViewport().apply();
         mapRenderer.render();
         mainStage.draw();
 
@@ -245,6 +251,7 @@ public class PlayScreen implements Screen {
     @Override
     public void resize(int width, int height) {
         mainStage.getViewport().update(width, height);
+        mainStage.getViewport().apply();
         hud.resize(width, height);
         controller.resize(width, height);
     }

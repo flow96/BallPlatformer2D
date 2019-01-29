@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="50" height="17" tilewidth="128" tileheight="128" infinite="0" nextlayerid="13" nextobjectid="16">
+ <tileset firstgid="1" source="spritesheet_ground.tsx"/>
+ <tileset firstgid="129" source="PaperBackground.tsx"/>
+ <tileset firstgid="138" source="spritesheet_tiles.tsx"/>
+ <layer id="10" name="background" width="50" height="17">
+  <data encoding="base64" compression="zlib">
+   eJzt0rkNADAMw0Cv7vzZOmozgWRABQEOcBkRDXWUhX+giVbx3+igW/zZHuzKrpSf7cGu7Er52R7syq6Un+3Brv5/9ra5Aw==
+  </data>
+ </layer>
+ <layer id="11" name="tiles2" width="50" height="17">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AU0AtMGWgHEABbBtoBo4CmYOtAO2AUjIIhDGD5Z6SUk0wD7YBRwHBsoB0wCggCAHeIBC8=
+  </data>
+ </layer>
+ <layer id="12" name="tiles" width="50" height="17">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUEAKCQMyJhBkH1jkDBtDDYbCFxWg8DW8wGr+jYBRQDpDzEb48xEUf59AcMA20A6gEhrI/kNPcUPYHNgAAH40BFQ==
+  </data>
+ </layer>
+ <objectgroup id="4" name="goal">
+  <object id="15" x="6016" y="1792" width="128" height="128"/>
+ </objectgroup>
+ <objectgroup id="5" name="ground">
+  <object id="1" x="256" y="512" width="640" height="128"/>
+  <object id="2" x="1024" y="768" width="640" height="128"/>
+  <object id="3" x="2304" y="640" width="768" height="128"/>
+  <object id="4" x="3584" y="1024" width="640" height="128"/>
+  <object id="5" x="4864" y="1536" width="512" height="128"/>
+  <object id="13" x="5760" y="1920" width="512" height="128"/>
+  <object id="14" x="6144" y="1536" width="128" height="384"/>
+ </objectgroup>
+ <objectgroup id="6" name="startPos">
+  <object id="12" x="256" y="384" width="128" height="128"/>
+ </objectgroup>
+</map>
