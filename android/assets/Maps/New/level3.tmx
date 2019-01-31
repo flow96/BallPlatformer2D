@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="128" tileheight="128" infinite="0" nextlayerid="7" nextobjectid="13">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="36" height="21" tilewidth="128" tileheight="128" infinite="0" nextlayerid="10" nextobjectid="13">
  <tileset firstgid="1" source="spritesheet_ground.tsx"/>
  <tileset firstgid="129" source="PaperBackground.tsx"/>
  <tileset firstgid="138" source="spritesheet_tiles.tsx"/>
- <layer id="3" name="background" width="30" height="17">
+ <layer id="7" name="background" width="36" height="21">
   <data encoding="base64" compression="zlib">
-   eJzt0LkRACAQw0C3fvx0jRogdeRAM4q3JDXqVMYfNGmZf9Oha36nbZzjHOc4xznOv38gwAis
+   eJzt0bkNACAQxMBrnR+6Zstw4MCS82lV1dNIDfAzrbQhf9JND/IEI7300ksvwhOM9NJLL70I/wEQiIjU
   </data>
  </layer>
- <layer id="2" name="tiles2" width="30" height="17">
+ <layer id="8" name="tiles2" width="36" height="21">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUDAWwZQDtZiJDzxSqu4L6YCsanxx/UgJIsQ9dLal6aeU3Stw1CgYGAABnsQIQ
+   eJxjYBgFo2AUjIJRMBBgy0A7AAtgoqJZU6hoFr3BVjQ+NcOFEkANd6CbQYqZTFRyAymAEveOglEwUgAAO9kCEA==
   </data>
  </layer>
- <layer id="1" name="tiles" width="30" height="17">
+ <layer id="9" name="tiles" width="36" height="21">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUkAo40TC9ABMapjWA+Y+RDnYhA3L8iB4npMQLJf5EjxNCbkZ2Hyn2CWLRi89e9LAgNw6x+Q8ZY3PXKBjcAACETQFD
+   eJxjYBgFo2AUjIKRAzjR8EADJjQ8UAAWHowD6AZkQM0wQY9zUuKdFuGCHueE/Ijsbmq4QxCLmfjcgx521E4j2MIDGWNz7ygYBaMAFQAApQMBQw==
   </data>
  </layer>
  <objectgroup id="4" name="goal">
-  <object id="1" x="3712" y="640" width="128" height="128"/>
+  <object id="1" x="4096" y="896" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="5" name="ground">
-  <object id="4" x="384" y="1536" width="1152" height="256"/>
-  <object id="5" x="896" y="1280" width="640" height="256"/>
-  <object id="6" x="1408" y="1664" width="640" height="128"/>
-  <object id="7" x="1920" y="1536" width="640" height="128"/>
-  <object id="8" x="2432" y="1408" width="512" height="128"/>
-  <object id="9" x="2816" y="1280" width="384" height="128"/>
-  <object id="11" x="3072" y="1024" width="384" height="256"/>
-  <object id="12" x="3328" y="768" width="512" height="256"/>
+  <object id="4" x="768" y="1792" width="1152" height="256"/>
+  <object id="5" x="1280" y="1536" width="640" height="256"/>
+  <object id="6" x="1792" y="1920" width="640" height="128"/>
+  <object id="7" x="2304" y="1792" width="640" height="128"/>
+  <object id="8" x="2816" y="1664" width="512" height="128"/>
+  <object id="9" x="3200" y="1536" width="384" height="128"/>
+  <object id="11" x="3456" y="1280" width="384" height="256"/>
+  <object id="12" x="3712" y="1024" width="512" height="256"/>
  </objectgroup>
  <objectgroup id="6" name="startPos">
-  <object id="3" x="384" y="1408" width="128" height="128"/>
+  <object id="3" x="768" y="1664" width="128" height="128"/>
  </objectgroup>
 </map>

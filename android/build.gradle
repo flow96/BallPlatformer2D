@@ -17,7 +17,7 @@ android {
         exclude 'META-INF/robovm/ios/robovm.xml'
     }
     defaultConfig {
-        applicationId "de.flo.platformer2d"
+        applicationId "de.flo.ballplatformer"
         minSdkVersion 9
         targetSdkVersion 28
         versionCode 1
@@ -86,7 +86,7 @@ task run(type: Exec) {
     }
 
     def adb = path + "/platform-tools/adb"
-    commandLine "$adb", 'shell', 'am', 'start', '-n', 'de.flo.platformer2d/de.flo.platformer2d.AndroidLauncher'
+    commandLine "$adb", 'shell', 'am', 'start', '-n', 'de.flo.ballplatformer/AndroidLauncher'
 }
 
 // sets up the Android Eclipse project, using the old Ant based build.
