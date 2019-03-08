@@ -27,6 +27,7 @@ public class Hud {
     private de.flo.ballplatformer.utils.Assets assets;
 
     private int score;
+    private int maxScore;
     private int level;
     private OrthographicCamera cam;
     private Viewport viewport;
@@ -45,6 +46,7 @@ public class Hud {
 
     public Hud(int level, SpriteBatch batch, final de.flo.ballplatformer.screens.PlayScreen playScreen){
         score = 0;
+        this.maxScore = playScreen.getLevelMaxScore();
         this.level = level;
         this.playScreen = playScreen;
 
@@ -66,7 +68,7 @@ public class Hud {
         Table table = new Table();
         table.top();
         table.setFillParent(true);
-        lblScore = new Label("SCORE: " + score, new Label.LabelStyle(new BitmapFont(Gdx.files.internal("Fonts/test.fnt"), new TextureRegion(fontTexture)), Color.WHITE));
+        lblScore = new Label("SCORE: " + score + "/" + maxScore, new Label.LabelStyle(new BitmapFont(Gdx.files.internal("Fonts/test.fnt"), new TextureRegion(fontTexture)), Color.WHITE));
         lblLevel = new Label("LEVEL: " + level, new Label.LabelStyle(new BitmapFont(Gdx.files.internal("Fonts/test.fnt"), new TextureRegion(fontTexture)), Color.WHITE));
 
         pause = new TextureRegionDrawable(new TextureRegion(assets.getManager().get(assets.btnPause, Texture.class)));
@@ -156,6 +158,11 @@ public class Hud {
         stage.getViewport().apply();
 
         stage.draw();
+    }
+
+    public void increaseScore(){
+        this.score++;
+        lblScore.setText("SCORE: " + score + "/" + maxScore);
     }
 
     public void setPaused(){

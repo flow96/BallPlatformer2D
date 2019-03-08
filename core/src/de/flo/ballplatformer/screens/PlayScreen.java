@@ -28,8 +28,10 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import de.flo.ballplatformer.PlatformerGame;
 import de.flo.ballplatformer.actors.CheckPoint;
+import de.flo.ballplatformer.actors.Coin;
 import de.flo.ballplatformer.actors.Goal;
 import de.flo.ballplatformer.actors.Player;
+import de.flo.ballplatformer.constants.Constants;
 import de.flo.ballplatformer.handlers.Box2DContactHandler;
 import de.flo.ballplatformer.utils.Hud;
 import de.flo.ballplatformer.utils.MobileController;
@@ -55,6 +57,7 @@ public class PlayScreen implements Screen {
     private MobileController controller;
 
     private Player player;
+    private int levelMaxScore = 0;
 
     public int levelIndex;
 
@@ -113,13 +116,11 @@ public class PlayScreen implements Screen {
 
         player.toFront();
 
-        // Set contact handler
-        world.setContactListener(new Box2DContactHandler(player));
-
         // Set up HUD
         hud = new Hud(levelIndex, batch, this);
 
-
+        // Set contact handler
+        world.setContactListener(new Box2DContactHandler(player, hud));
 
         InputMultiplexer im = new InputMultiplexer(controller.getStage(), hud.getStage());
         Gdx.input.setInputProcessor(im);
@@ -144,7 +145,7 @@ public class PlayScreen implements Screen {
 
             shape.setAsBox(rect.getWidth() / 2 / de.flo.ballplatformer.constants.Constants.PPM, rect.getHeight() / 2 / de.flo.ballplatformer.constants.Constants.PPM);
             fdef.shape = shape;
-            body.createFixture(fdef);
+            body.createFixture(fdef).setUserData("ground");
         }
 
         // Goals
@@ -184,6 +185,15 @@ public class PlayScreen implements Screen {
 
                 // Add a flag image to the stage
                 mainStage.addActor(point);
+            }
+        }
+        // Coins
+        if(map.getLayers().get("coins") != null) {
+            // Coins
+            for (MapObject object : map.getLayers().get("coins").getObjects().getByType(RectangleMapObject.class)){
+                this.levelMaxScore++;
+                Rectangle rect = ((RectangleMapObject) object).getRectangle();
+                Coin coin = new Coin(mainStage, new Vector2((rect.getX() + rect.getWidth() / 2) / Constants.PPM, (rect.getY() + rect.getHeight() / 2) / Constants.PPM), world);
             }
         }
 
@@ -285,6 +295,10 @@ public class PlayScreen implements Screen {
         b2DebugRenderer.dispose();
         world.dispose();
         mapRenderer.dispose();
+    }
+
+    public int getLevelMaxScore() {
+        return levelMaxScore;
     }
 
     public PlatformerGame getGameManager() {

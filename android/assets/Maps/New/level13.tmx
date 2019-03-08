@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="70" height="40" tilewidth="128" tileheight="128" infinite="0" nextlayerid="14" nextobjectid="179">
+ <tileset firstgid="1" source="spritesheet_ground.tsx"/>
+ <tileset firstgid="129" source="spritesheet_tiles.tsx"/>
+ <tileset firstgid="257" source="PaperBackground.tsx"/>
+ <layer id="11" name="background" width="70" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt0rkNwDAQBDGdLX/9N6yNDKgDBhcMwAKmaowjnanav2e60t3e/KQ3fe3NyrealW81K99qVr7VrHyrWflWs/KtZuVbzcq3mpVvNSvfala+1ax8q1n5VrPyrWblW83Kt5qVbzUr32pWvtWsfKtZ+Vaz8q1m5VvNyrealW81K99qVr7VrHyrWflWs/KtZuVbzcq3mpVvNSvfala+1ax8q3kBR8NApw==
+  </data>
+ </layer>
+ <layer id="12" name="tiles2" width="70" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt2EEKgCAQBVBbtuzsHaNu0LIrdYCUWrQ1A8Xeg9mJfMQRxhAAAP7jiLXWDtGBI2Ot84ZvLUFf8b10p7baIQCg0Fw7QEOmWONdQ+UstMUscXn2iF5pX84/VPL2nu/hmrl7NDayRwnvFwAA0KMTo+oLZA==
+  </data>
+ </layer>
+ <layer id="13" name="tiles" width="70" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt2DEOhCAQBVC1s/QYlpYeZcu9/w2s1I4QzLpGg+h7ye8wmQxggKoCAOCNxiVDlD5rRWX6LmmDfH6M76Lx7aXVlavJXcBN6Uva2pdwT9V5y+EB4n+1NZW29klv0vRmW+osZJ8BAOx35L4SfzPtyBvOa81JySWc1yfOD//zngEAUJ4ZVGcMoA==
+  </data>
+ </layer>
+ <objectgroup id="4" name="goal">
+  <object id="178" x="1664" y="1024" width="128" height="128"/>
+ </objectgroup>
+ <objectgroup id="5" name="ground">
+  <object id="160" x="640" y="3968" width="640" height="128"/>
+  <object id="161" x="1536" y="3712" width="512" height="128"/>
+  <object id="162" x="2688" y="3456" width="640" height="128"/>
+  <object id="163" x="4352" y="3456" width="512" height="256"/>
+  <object id="164" x="6016" y="3456" width="640" height="256"/>
+  <object id="165" x="4864" y="3584" width="1152" height="128"/>
+  <object id="166" x="7040" y="3072" width="768" height="128"/>
+  <object id="167" x="8192" y="2688" width="512" height="128"/>
+  <object id="168" x="7040" y="2304" width="896" height="128"/>
+  <object id="169" x="6912" y="2176" width="256" height="128"/>
+  <object id="170" x="6784" y="2048" width="256" height="128"/>
+  <object id="171" x="6272" y="1920" width="640" height="128"/>
+  <object id="172" x="5120" y="1664" width="640" height="128"/>
+  <object id="173" x="4608" y="1280" width="640" height="128"/>
+  <object id="174" x="5120" y="1408" width="128" height="256"/>
+  <object id="175" x="3072" y="1280" width="640" height="128"/>
+  <object id="177" x="1536" y="1152" width="768" height="64"/>
+ </objectgroup>
+ <objectgroup id="10" name="spikes">
+  <object id="159" x="4864" y="3552" width="1152" height="32"/>
+ </objectgroup>
+ <objectgroup id="6" name="startPos">
+  <object id="158" x="768" y="3840" width="128" height="128"/>
+ </objectgroup>
+</map>

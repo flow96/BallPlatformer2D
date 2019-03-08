@@ -2,6 +2,7 @@ package de.flo.ballplatformer.utils;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Assets {
 
@@ -52,6 +53,14 @@ public class Assets {
     public final String goalGreen = "Goals/goal_green.png";
     public final String goalRed = "Goals/goal_red.png";
     public final String goalYellow = "Goals/goal_yellow.png";
+    // Coins
+    public final String coin_1 = "Coins/gold_1.png";
+    public final String coin_2 = "Coins/gold_2.png";
+    public final String coin_3 = "Coins/gold_3.png";
+    public final String coin_4 = "Coins/gold_4.png";
+    public final String coin_5 = "Coins/gold_5.png";
+    public final String coin_6 = "Coins/gold_6.png";
+
 
 
 
@@ -75,6 +84,13 @@ public class Assets {
         manager.load(goalGreen, Texture.class);
         manager.load(goalRed, Texture.class);
         manager.load(goalYellow, Texture.class);
+        manager.load(coin_1, Texture.class);
+        manager.load(coin_2, Texture.class);
+        manager.load(coin_3, Texture.class);
+        manager.load(coin_4, Texture.class);
+        manager.load(coin_5, Texture.class);
+        manager.load(coin_6, Texture.class);
+
     }
 
 

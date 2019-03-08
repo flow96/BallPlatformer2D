@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="36" height="21" tilewidth="128" tileheight="128" infinite="0" nextlayerid="10" nextobjectid="10">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="36" height="21" tilewidth="128" tileheight="128" infinite="0" nextlayerid="11" nextobjectid="15">
  <tileset firstgid="1" source="PaperBackground.tsx"/>
  <tileset firstgid="10" source="spritesheet_ground.tsx"/>
  <tileset firstgid="138" source="spritesheet_tiles.tsx"/>
@@ -18,6 +18,12 @@
    eJxjYBgFo2AUjIJRQAsgBcRCODDXALiHmwCmBcAVBlwD5B5CdtLSPfjCgh4Am/2jYBSMguEBAMRoA0Q=
   </data>
  </layer>
+ <objectgroup id="10" name="coins">
+  <object id="10" x="1152" y="1408" width="128" height="128"/>
+  <object id="11" x="1280" y="1408" width="128" height="128"/>
+  <object id="13" x="1920" y="1152" width="128" height="128"/>
+  <object id="14" x="2176" y="1152" width="128" height="128"/>
+ </objectgroup>
  <objectgroup id="3" name="ground">
   <object id="5" x="512" y="1792" width="640" height="128"/>
   <object id="6" x="1024" y="1664" width="896" height="128"/>
